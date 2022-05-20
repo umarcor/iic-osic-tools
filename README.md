@@ -151,11 +151,11 @@ In "CMD" you can't set the variables directly when running the script. So for th
 
 The installation slightly differs from the original foss-asic-tools install by efabless. For this image, the build is replaced with a single Dockerfile for convenience when doing a multi-architecture build. For a basic single(native)-architecture build, just run
 
-    docker build .
+    docker build -f Dockerfile context
 
 You can add build parameters accordingly. We strongly recommend using "docker buildx" because of buildkit (parallel building) and multi-architecture support. The script "build_all.sh" includes building with buildx, on two different machines (for fast amd64 and arm64 builds) and pushes both images to the Docker Hub under the same tag. The script includes multiple environment variables with defaults. If you intend to build this image, we encourage to use this script as a template.
 The predefined settings are for the IIC build-machines and the image gets pushed with the tags "latest" and "year.month".
-    
+
 ### Detailed container settings
 For specific usecases, the containers can be started without the help of the start-scripts. A few things to note down:
 

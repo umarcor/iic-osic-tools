@@ -75,5 +75,5 @@ if ! docker buildx inspect ${BUILDER_NAME} ; then
 	${ECHO_IF_DRY_RUN} docker buildx create --name ${BUILDER_NAME} --config ./buildkitd.toml --platform linux/amd64 ${BUILDER_NAME}-amd64
 	${ECHO_IF_DRY_RUN} docker buildx create --name ${BUILDER_NAME} --config ./buildkitd.toml --platform linux/arm64 --append ${BUILDER_NAME}-arm64
 fi
-${ECHO_IF_DRY_RUN} docker buildx build --platform ${DOCKER_PLATFORMS} --builder ${BUILDER_NAME} ${load_or_push} ${TAG_PARAMS} .
+${ECHO_IF_DRY_RUN} docker buildx build --platform ${DOCKER_PLATFORMS} --builder ${BUILDER_NAME} ${load_or_push} ${TAG_PARAMS} -f Dockerfile context
 
