@@ -1,0 +1,31 @@
+name: Pipeline
+
+on:
+  push:
+  pull_request:
+
+env:
+  DOCKER_BUILDKIT: 1
+
+jobs:
+
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - run: docker build -f Dockerfile context
+
+
+  BuildAll:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - run: ./build-all.sh
